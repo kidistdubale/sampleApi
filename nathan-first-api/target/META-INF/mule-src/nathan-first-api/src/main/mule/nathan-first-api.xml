@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="2132e76e-74aa-4b0d-b968-74efac654adf" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="nathan-first-apiFlow" doc:id="b43b2d21-5116-4f6d-8ee1-06c5c8387831" >
+		<http:listener doc:name="Listener" doc:id="8ce1d360-781c-4a8a-a98e-67e00ab0314f" config-ref="HTTP_Listener_config" path="/nathan"/>
+		<set-payload value='#["Nathan is smart"]' doc:name="Set Payload" doc:id="a6143b93-85c8-4c99-aa7e-028517637e07" />
+		<logger level="INFO" doc:name="Logger" doc:id="bf104916-14e0-40b6-8d27-4c67c88e1736" message="#[payload]"/>
+	</flow>
+</mule>
